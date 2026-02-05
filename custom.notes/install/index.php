@@ -82,25 +82,14 @@ class custom_notes extends CModule
     {
         CopyDirFiles($_SERVER["DOCUMENT_ROOT"] . "/local/modules/custom.notes/install/components/", $_SERVER["DOCUMENT_ROOT"] . "/local/components/", true, true);
 
-        $moduleApiPath = $_SERVER["DOCUMENT_ROOT"] . "/local/modules/custom.notes/public/api/";
-        $publicApiPath = $_SERVER["DOCUMENT_ROOT"] . "/api/";
+        $from = $_SERVER['DOCUMENT_ROOT'] . '/local/modules/custom.notes/public/api/rest-notes';
+        $to   = $_SERVER['DOCUMENT_ROOT'] . '/api/rest-notes';
 
-        if (!is_dir($publicApiPath)) {
-            mkdir($publicApiPath, 0755, true); // true = рекурсивно, но у нас только одна папка
+        if (!\Bitrix\Main\IO\Directory::isDirectoryExists($to)) {
+            \Bitrix\Main\IO\Directory::createDirectory($to);
         }
 
-        $files = scandir($moduleApiPath);
-
-        foreach ($files as $file) {
-            if (in_array($file, ['.', '..'])) continue;
-
-            $source = $moduleApiPath . $file;
-            $dest = $publicApiPath . $file;
-
-            if (is_file($source)) {
-                copy($source, $dest); // копируем файл, перезаписывая если уже есть
-            }
-        }
+        CopyDirFiles($from, $to, true, true);
 
         return true;
     }
@@ -108,22 +97,7 @@ class custom_notes extends CModule
     function UnInstallFiles()
     {
         DeleteDirFilesEx("/local/components/custom-notes/");
-
-        $moduleApiPath = $_SERVER["DOCUMENT_ROOT"] . "/local/modules/custom.notes/public/api/";
-        $publicApiPath = $_SERVER["DOCUMENT_ROOT"] . "/api/";
-
-        // Удаляем файлы, которые были скопированы из модуля
-        $files = scandir($moduleApiPath);
-
-        foreach ($files as $file) {
-            if (in_array($file, ['.', '..'])) continue;
-
-            $targetFile = $publicApiPath . $file;
-
-            if (file_exists($targetFile) && is_file($targetFile)) {
-                unlink($targetFile); // удаляем файл
-            }
-        }
+        DeleteDirFilesEx('/api/v1/notes');
 
         return true;
     }

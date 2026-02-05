@@ -2,6 +2,6 @@
 
 <div id="notes-app"></div>
 <script type="module">
-    import { initNotesApp } from '/local/modules/custom.notes/js/app.js';
+    import { initNotesApp } from '/local/modules/custom.notes/js/app-rest.js';
     initNotesApp('#notes-app');
 </script>

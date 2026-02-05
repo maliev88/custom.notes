@@ -4,6 +4,10 @@
     font-family: Arial, sans-serif;
 }
 
+.notes_form_container{
+    border: 1px solid #ddd;
+}
+
 #notes-app h2 {
     text-align: center;
     margin-bottom: 20px;
