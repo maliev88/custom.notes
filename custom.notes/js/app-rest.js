@@ -36,21 +36,21 @@ export function initNotesApp(selector = '#notes-app') {
                 await loadNotes();
             };
 
-            /** ✏️ PUT /api/rest-notes/{id} */
+            /** ✏️ PUT /api/rest-notes?ID=123 */
             const updateNote = async (note) => {
                 if (!note.ID) return;
 
-                await axios.put(`${API_URL}/${note.ID}`, {
+                await axios.put(`${API_URL}?ID=${note.ID}`, {
                     title: note.TITLE,
                     content: note.CONTENT
                 });
             };
 
-            /** ❌ DELETE /api/rest-notes/{id} */
+            /** ❌ DELETE /api/rest-notes?ID=123 */
             const deleteNote = async (id) => {
                 if (!id) return;
 
-                await axios.delete(`${API_URL}/${id}`);
+                await axios.delete(`${API_URL}?ID=${id}`);
                 await loadNotes();
             };
 

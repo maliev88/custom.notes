@@ -1,5 +1,4 @@
 <?php
-
 use Bitrix\Main\Loader;
 use Bitrix\Main\Application;
 use Bitrix\Main\Web\Json;
@@ -18,15 +17,13 @@ if (!Loader::includeModule('custom.notes')) {
 $request = Application::getInstance()->getContext()->getRequest();
 $method  = $request->getRequestMethod();
 
-// Получаем ID из URL
-$path = trim($_SERVER['REQUEST_URI'], '/');
-$parts = explode('/', $path);
-$id = isset($parts[3]) ? (int)$parts[3] : null;
+// Получаем ID из query string ?ID=123
+$id = (int) $request->getQuery("ID");
 
 try {
     switch ($method) {
 
-        /** 📥 GET /api/rest-notes или /api/rest-notes/{id} */
+        /** 📥 GET /api/rest-notes или /api/rest-notes?ID=123 */
         case 'GET':
             if ($id) {
                 $note = NotesTable::getById($id)->fetch();
@@ -63,7 +60,7 @@ try {
             echo Json::encode(['id' => $result->getId()]);
             break;
 
-        /** ✏️ PUT /api/rest-notes/{id} */
+        /** ✏️ PUT /api/rest-notes?ID=123 */
         case 'PUT':
             if (!$id) {
                 http_response_code(400);
@@ -81,7 +78,7 @@ try {
             echo Json::encode(['status' => 'updated']);
             break;
 
-        /** ❌ DELETE /api/rest-notes/{id} */
+        /** ❌ DELETE /api/rest-notes?ID=123 */
         case 'DELETE':
             if (!$id) {
                 http_response_code(400);
