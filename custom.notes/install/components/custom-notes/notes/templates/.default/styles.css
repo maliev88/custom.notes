@@ -1,0 +1,93 @@
+#notes-app {
+    max-width: 600px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+}
+
+#notes-app h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.notes_form_container{
+    padding: 10px;
+}
+
+.note-form input,
+.note-form textarea {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.note-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.note-form button:hover {
+    background-color: #45a049;
+}
+
+.notes-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+
+.notes-list li {
+    background: #f9f9f9;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notes-list b,
+.notes-list span {
+    display: inline-block;
+    padding: 2px 4px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}
+
+.notes-list b {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.notes-list span {
+    flex: 1;
+}
+
+.notes-list button {
+    background-color: #f44336;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.notes-list button:hover {
+    background-color: #d32f2f;
+}
+
+.notes-list li b[contenteditable],
+.notes-list li span[contenteditable] {
+    border-bottom: 1px dotted #999;
+    min-width: 50px;
+    outline: none;
+}

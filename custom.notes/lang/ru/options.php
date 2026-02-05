@@ -1,0 +1,7 @@
+<?php
+$MODULE_PREFIX = "YADELIVERY";
+$MESS['PCODE_'.$MODULE_PREFIX.'_SETTINGS_TAB_NAME'] = 'Настройки';
+$MESS['PCODE_'.$MODULE_PREFIX.'_SETTINGS_TAB_TITLE'] = 'Основные';
+$MESS['PCODE_'.$MODULE_PREFIX.'_TAB_BTN_SAVE'] = 'Сохранить';
+$MESS["PCODE_'.$MODULE_PREFIX.'_SAVE_MODULE_SETTINGS"] = "Сохранить настройку";
+$MESS["PCODE_'.$MODULE_PREFIX.'_RELOAD_PAGE"] = "Обновить страницу";
