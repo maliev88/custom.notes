@@ -11,7 +11,7 @@ export function initNotesApp(selector = '#notes-app') {
             const content = ref('');
             const loading = ref(false);
 
-            /** 📥 GET /api/rest-notes */
+            /** GET /api/rest-notes */
             const loadNotes = async () => {
                 loading.value = true;
                 try {
@@ -22,7 +22,7 @@ export function initNotesApp(selector = '#notes-app') {
                 }
             };
 
-            /** ➕ POST /api/rest-notes */
+            /** POST /api/rest-notes */
             const addNote = async () => {
                 if (!title.value.trim()) return;
 
@@ -36,7 +36,7 @@ export function initNotesApp(selector = '#notes-app') {
                 await loadNotes();
             };
 
-            /** ✏️ PUT /api/rest-notes?ID=123 */
+            /** PUT /api/rest-notes?ID=123 */
             const updateNote = async (note) => {
                 if (!note.ID) return;
 
@@ -46,7 +46,7 @@ export function initNotesApp(selector = '#notes-app') {
                 });
             };
 
-            /** ❌ DELETE /api/rest-notes?ID=123 */
+            /** DELETE /api/rest-notes?ID=123 */
             const deleteNote = async (id) => {
                 if (!id) return;
 

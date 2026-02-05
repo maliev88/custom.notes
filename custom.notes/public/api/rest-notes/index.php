@@ -23,7 +23,7 @@ $id = (int) $request->getQuery("ID");
 try {
     switch ($method) {
 
-        /** 📥 GET /api/rest-notes или /api/rest-notes?ID=123 */
+        /** GET /api/rest-notes или /api/rest-notes?ID=123 */
         case 'GET':
             if ($id) {
                 $note = NotesTable::getById($id)->fetch();
@@ -41,7 +41,7 @@ try {
             }
             break;
 
-        /** ➕ POST /api/rest-notes */
+        /** POST /api/rest-notes */
         case 'POST':
             $data = Json::decode($request->getInput());
 
@@ -60,7 +60,7 @@ try {
             echo Json::encode(['id' => $result->getId()]);
             break;
 
-        /** ✏️ PUT /api/rest-notes?ID=123 */
+        /** PUT /api/rest-notes?ID=123 */
         case 'PUT':
             if (!$id) {
                 http_response_code(400);
@@ -78,7 +78,7 @@ try {
             echo Json::encode(['status' => 'updated']);
             break;
 
-        /** ❌ DELETE /api/rest-notes?ID=123 */
+        /** DELETE /api/rest-notes?ID=123 */
         case 'DELETE':
             if (!$id) {
                 http_response_code(400);
